@@ -688,3 +688,17 @@ procdump(void)
     printf("\n");
   }
 }
+
+// Determine the number of processes in the system
+uint64
+nproc(void)
+{
+  struct proc *p;
+  uint64 count = 0;
+  for (p = proc; p < &proc[NPROC]; p++) {
+    if (p->state != UNUSED) {
+      count++;
+    }
+  }
+  return count;
+}
