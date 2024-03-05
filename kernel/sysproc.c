@@ -94,13 +94,18 @@ sys_uptime(void)
 }
 
 uint64
-sys_trace(void)
+sys_trace()
 {
-  int id;
-  argint(0, &id);
-  myproc()->syscall_trace = id;
+  int mask;
+
+  argint(0, &mask);
+
+  struct proc *pro = myproc();
+  printf("trace pid: %d\n", pro->pid);
+  pro->syscall_trace = mask;
+
   return 0;
-}
+} 
 
 uint64
 sys_sysinfo(void)
