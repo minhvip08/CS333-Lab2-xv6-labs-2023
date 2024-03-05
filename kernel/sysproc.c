@@ -100,9 +100,9 @@ sys_trace()
 
   argint(0, &mask);
 
-  struct proc *pro = myproc();
-  printf("trace pid: %d\n", pro->pid);
-  pro->syscall_trace = mask;
+  
+  // struct proc *pro = myproc();
+  myproc()->syscall_trace = mask;
 
   return 0;
 } 
